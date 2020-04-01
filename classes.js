@@ -99,10 +99,10 @@ class Game {
 
     // Checks for collision between two objects. Returns true if colliding
     checkCollision(a, b) {
-        if (a.x <= b.x + b.width &&
-            a.x + a.width >= b.x &&
-            a.y <= b.y + b.height &&
-            a.y + a.height >= b.y) {
+        if (a.position.x <= b.position.x + b.size.x &&
+            a.position.x + a.size.x >= b.position.x &&
+            a.position.y <= b.position.y + b.size.y &&
+            a.position.y + a.size.y >= b.position.y) {
             return true;
         }
         return false;
@@ -116,24 +116,24 @@ class Game {
 
             await obj.applyForce(gravity)
             await obj.applyForce(drag)
-            obj.update();
-            this.draw();
 
             if (this.checkCollision(obj, this.ground)) {
-                console.log(obj.velocity.y)
                 obj.velocity.y = .6 * -obj.velocity.y;
-                if (Math.abs(obj.velocity.y) < .2)
+                if (Math.abs(obj.velocity.y) < .2) {
                     obj.velocity.y = 0;
-                console.log(obj.velocity.y)
-                obj.y = this.ground.y - obj.height;
+                    obj.position.y = this.ground.position.y - obj.size.y;
+                }
                 let dir = (obj.velocity.x < 0) ? 1 : -1;
                 if (obj.velocity.x != 0) {
                     obj.velocity.x += this.ground.friction * dir;
                     if (Math.abs(obj.velocity.x) < .1)
                         obj.velocity.x = 0;
                 }
-                obj.x += obj.velocity.x * this.singleFrameTime * 100;
             }
+
+            await obj.update();
+
+            this.draw();
         }
     }
 
@@ -187,8 +187,6 @@ class ComponentNew {
     }
 
     applyForce(force) {
-        if(force.x != 0)
-            console.log(force, this.mass)
         this.acceleration.x += force.x / this.mass;
         this.acceleration.y += force.y / this.mass;
     }
