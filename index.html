@@ -5,28 +5,33 @@
         <link rel="stylesheet" href="style.css">
     </head>
 
-    <body>
+    <body class="row">
         <script src="classes.js" type="text/javascript"></script>
         <script src="script.js" type="text/javascript"></script>
 
-        <div class="row" style="padding: 8px 16px;">
-            <div class="col">
-                <div class="inputLabel">Force</div>
-                <input id="force" type="number" value="0">
-            </div>
-            <div class="col">
-                <div class="inputLabel">Angle</div>
-                <input id="angle" type="number" value="0">
-            </div>
-            <select id="objectSelect">
+        <div class="inputs col">
+            <div class="inputsTitle">Inputs</div>
+            <div class="inputLabel">Force</div>
+            <input id="force" class="slider" type="range" min=".01" max="50" value="1" style="margin-bottom: 16px;">
+            <div class="inputLabel">Angle</div>
+            <input id="angle" type="number" min="0" max="90" value="45" style="margin-bottom: 16px;">
+
+            <select id="objectSelect" style="margin-bottom: 16px;">
                 <option value="Marshmallow">Marshmallow</option>
                 <option value="Tennis Ball" selected>Tennis Ball</option>
                 <option value="Basketball">Basketball</option>
                 <option value="Bowling Ball">Bowling Ball</option>
             </select>
-            <button id="startBtn">Start</button>
-            <button id="resetBtn">Reset</button>
+
+            <div class="inputLabel">Grid</div>
+            <input id="gridOn" type="checkbox">
+
+            <div class="row" style="padding: 8px 16px;">
+                <button id="startBtn">Start</button>
+                <button id="resetBtn">Reset</button>
+            </div>
         </div>
-        <canvas id="simulationCanvas" height="500" width="800"></canvas>
+
+        <canvas id="simulationCanvas" height="500" width="800" style="margin-left: 32px;"></canvas>
     </body>
 </html>

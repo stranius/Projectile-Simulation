@@ -7,6 +7,9 @@ class Game {
         this.size = { x: 800, y: 500 }
         this.components = []
         this.projectile_starting_pos = {x: 30, y: this.size.y - 70}
+        this.gridLine = new Image();
+        this.gridLine.src = "assets/gridLine.png";
+        this.gridOn = false;
     }
 
     init() {
@@ -43,7 +46,7 @@ class Game {
             // execute drawImage statements here
             projectile.draw();
         }, false);
-        projectile.mass = .0058;
+        projectile.mass = .58;
         projectile.size = { x: 20, y: 20 };
         projectile.image.src = "assets/tennis.png";
 
@@ -148,6 +151,19 @@ class Game {
 
         for (let i in this.components) {
             this.components[i].draw();
+        }
+
+        // Draw the grid if it is on
+        let gridSize = 40;
+        let cols = this.canvas.width / gridSize;
+        let rows = this.canvas.height / gridSize
+        // console.log(cols, rows)
+        if(this.gridOn) {
+            for(let i = 0; i < cols; i++) {
+                for(let j = 0; j < rows; j++) {
+                    this.context.drawImage(this.gridLine, i * gridSize, j * gridSize, gridSize, gridSize);
+                }
+            }
         }
     }
 }

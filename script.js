@@ -9,6 +9,7 @@ window.onload = () => {
     let start = document.getElementById("startBtn");
     let reset = document.getElementById("resetBtn");
     let objectSelect = document.getElementById("objectSelect");
+    let gridOn = document.getElementById("gridOn");
 
     objectSelect.addEventListener("change", function() {
         let objectSelect = document.getElementById("objectSelect");
@@ -19,12 +20,12 @@ window.onload = () => {
         }, false);
         switch (objectSelect.value) {
             case "Marshmallow":
-                game.projectile.mass = .0007;
+                game.projectile.mass = .28;
                 game.projectile.size = {x: 15, y: 15};
                 game.projectile.image.src = "assets/marshmallow.svg";
                 break;
             case "Tennis Ball":
-                game.projectile.mass = .0058;
+                game.projectile.mass = .58;
                 game.projectile.size = { x: 20, y: 20 };
                 game.projectile.image.src = "assets/tennis.png";
                 break;
@@ -41,6 +42,12 @@ window.onload = () => {
         }
         game.draw();
     })
+
+    gridOn.onchange = function() {
+        let gridOn = document.getElementById("gridOn");
+        console.log(gridOn.checked)
+        game.gridOn = gridOn.checked;
+    }
 
 
     start.onclick = function() {

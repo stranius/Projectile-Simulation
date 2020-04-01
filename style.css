@@ -1,9 +1,16 @@
+html {
+    color: #414141;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 body {
     align-items: center;
     align-content: center;
+    background: #f0f0f0;
     display: flex;
     flex-direction: column;
     height: 100vh;
+    justify-content: center;
     margin: 0;
     width: 100vw;
 }
@@ -69,4 +76,52 @@ button:focus {
     font-size: 13px;
     font-weight: 700;
     margin-left: 8px;
+}
+
+.inputs {
+    align-items: center;
+    background: #ffffff;
+    border-radius: 10px;
+    justify-content: center;
+    min-width: 200px;
+    padding: 16px 32px;
+}
+
+.inputsTitle {
+    border-bottom: 1px solid #f0f0f0;
+    color: #414141;
+    font-size: 22px;
+    font-weight: 300;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    text-align: center;
+    width: 100%;
+}
+
+.slider {
+    background: #f0f0f0;
+    border-radius: 10px;
+    height: 4px;
+    outline: none;
+    width: 80%;
+    -webkit-appearance: none;
+}
+
+.slider::-webkit-slider-thumb {
+    appearance: none;
+    background: #3ba7ff;
+    border-radius: 20px;
+    cursor: pointer;
+    height: 16px;
+    width: 16px;
+    -webkit-appearance: none;
+}
+
+.slider::-moz-range-thumb {
+    appearance: none;
+    background: #3ba7ff;
+    border-radius: 20px;
+    cursor: pointer;
+    height: 16px;
+    width: 16px;
 }
